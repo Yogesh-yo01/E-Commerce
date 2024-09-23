@@ -10,13 +10,17 @@ const connectDatabase = require('./config/connectDatabase');
 
 dotenv.config({path: path.join(__dirname,'config','config.env')})
 
+const corsOperation={
+    origin:process.env.APPLICATION_URL,
+    methods:'GET,HEAD,PUT,PATCH,POST,DELETE'
+};
 const Products =require('./routes/products');
 const orders =require('./routes/order');
 
 connectDatabase();
 
 app.use(express.json())
-app.use(cors());
+app.use(cors(corsOperation));
 app.use('/api/v1/',Products);
 app.use('/api/v1/',orders);
 

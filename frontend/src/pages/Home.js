@@ -1,5 +1,5 @@
 import { Fragment, useEffect, useState } from "react";
-import {useSearchParams}from 'react-router-dom';
+import {useSearchParams } from 'react-router-dom';
 import ProductCard from "../components/ProductCard"
 
 export default function Home(){
@@ -8,6 +8,7 @@ export default function Home(){
 
   const [searchParams,setSearchParams]=useSearchParams();
   //Fetching API for All Products
+
   useEffect(()=>{
     fetch(process.env.REACT_APP_API_URL+'/product?'+searchParams)
     .then(res =>res.json())
